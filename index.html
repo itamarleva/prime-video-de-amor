@@ -39,6 +39,15 @@
             box-sizing: border-box;
         }
 
+        ::selection {
+            background: var(--blue-accent);
+            color: #ffffff;
+        }
+        ::-moz-selection {
+            background: var(--blue-accent);
+            color: #ffffff;
+        }
+
         :root {
             --bg-primary: #0f1721;
             --bg-secondary: #1a2634;
@@ -170,15 +179,17 @@
 
         .hero-subtitle {
             font-size: 14px;
-            color: var(--text-secondary);
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 12px;
             line-height: 1.4;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
         }
 
         .hero-meta {
             font-size: 12px;
-            color: var(--text-muted);
+            color: rgba(255, 255, 255, 0.75);
             margin-bottom: 20px;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.8);
             display: flex;
             align-items: center;
             flex-wrap: wrap;
@@ -221,12 +232,14 @@
             font-family: inherit;
             flex: 1;
             min-width: 140px;
+            animation: buttonPulse 2.5s infinite;
         }
 
         .btn-play:hover {
-            background: var(--blue-accent);
+            background: var(--blue-hover);
             color: white;
-            transform: scale(1.02);
+            transform: scale(1.04);
+            box-shadow: 0 8px 20px rgba(0, 168, 225, 0.3);
         }
 
         .btn-secondary {
@@ -361,7 +374,10 @@
             scrollbar-width: none;
         }
 
-        .scroll-row::-webkit-scrollbar { display: none; }
+        .scroll-row::-webkit-scrollbar { height: 4px; }
+        .scroll-row::-webkit-scrollbar-track { background: transparent; }
+        .scroll-row::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+        .scroll-row:hover::-webkit-scrollbar-thumb { background: rgba(0,168,225,0.5); }
 
         .moment-card {
             flex: 0 0 240px;
@@ -678,7 +694,9 @@
             display: none;
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.92);
+            background: rgba(15, 23, 33, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             z-index: 1000;
             align-items: center;
             justify-content: center;
@@ -800,6 +818,12 @@
         @keyframes pulse {
             0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.3); }
             50% { box-shadow: 0 0 0 12px rgba(255,255,255,0); }
+        }
+
+        @keyframes buttonPulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 168, 225, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 168, 225, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 168, 225, 0); }
         }
 
         @keyframes heartbeat {
