@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 
+        ============================================================
+        🎬 PRIME VIDEO DE AMOR — For Mariling ❤️
+        ============================================================
+        Built with love by Itamar.
+        
+        HOW TO CUSTOMIZE:
+        1. Replace "hero-photo.jpg" with your hero photo URL
+        2. Replace video URLs in the JavaScript section at the bottom
+        3. Replace "our-song.mp3" with your song (or use Spotify embed)
+        4. Edit messages, titles, and X-Ray list to personalize!
+        ============================================================
+    -->
+    <title>Prime Video de Amor — For Mariling 💕</title>
+
+    <!-- Open Graph tags for WhatsApp link preview -->
+    <meta property="og:title" content="🎬 You've been invited to Prime Video de Amor">
+    <meta property="og:description" content="A special streaming experience, exclusively for Mariling 💕">
+    <meta property="og:image" content="https://i.ibb.co/gFzyz73b/hero.jpg">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           🎨 GLOBAL STYLES & RESET
+           ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0f1721;
+            --bg-secondary: #1a2634;
+            --bg-card: #1f3040;
+            --blue-accent: #00a8e1;
+            --blue-hover: #00c8ff;
+            --gold: #f5c518;
+            --text-primary: #ffffff;
+            --text-secondary: #8197a4;
+            --text-muted: #5a7184;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ============================================================
+           🧭 NAVIGATION BAR
+           ============================================================ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(15, 23, 33, 0.95), rgba(15, 23, 33, 0.0));
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .navbar-logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar-logo .brand {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-logo .brand span {
+            color: var(--blue-accent);
+        }
+
+        .navbar-logo .sub {
+            font-size: 10px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-top: 1px;
+        }
+
+        .navbar-badge {
+            background: var(--blue-accent);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ============================================================
+           🖼️ HERO BANNER
+           ============================================================ */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 85vh;
+            /* 📸 REPLACE with your photo URL from ImgBB */
+            background: url('https://i.ibb.co/gFzyz73b/hero.jpg') center center / cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 0 16px 24px;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70%;
+            background: linear-gradient(to top, #0f1721 0%, rgba(15,23,33,0.8) 40%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: var(--blue-accent);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .hero-meta {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .hero-meta .separator { color: var(--text-muted); }
+
+        .hero-meta .badge-hd {
+            border: 1px solid var(--text-muted);
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        /* ============================================================
+           ▶️ ACTION BUTTONS
+           ============================================================ */
+        .hero-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-play {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .btn-play:hover {
+            background: var(--blue-accent);
+            color: white;
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.1);
+            color: var(--text-primary);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 14px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* ============================================================
+           ⭐ RATINGS & INFO STRIP
+           ============================================================ */
+        .ratings-strip {
+            padding: 24px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .ratings-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .rating-item {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 16px;
+            transition: transform 0.2s ease;
+        }
+
+        .rating-item:hover { transform: translateY(-2px); }
+
+        .rating-item .emoji { font-size: 24px; margin-bottom: 8px; }
+
+        .rating-item .label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .rating-item .value {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .rating-item .value.gold { color: var(--gold); }
+        .rating-item .value.blue { color: var(--blue-accent); }
+
+        .description-card {
+            margin-top: 16px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .description-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .description-card p em {
+            color: var(--blue-accent);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* ============================================================
+           🎞️ VIDEO ROWS — Horizontal Scroll
+           ============================================================ */
+        .section {
+            padding: 28px 0;
+        }
+
+        .section-header {
+            padding: 0 16px;
+            margin-bottom: 14px;
+        }
+
+        .section-header h2 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .section-header .section-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* "Included with Prime" style badge next to section titles */
+        .section-header .prime-badge {
+            display: inline-block;
+            background: rgba(0,168,225,0.15);
+            color: var(--blue-accent);
+            font-size: 9px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .scroll-row {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 0 16px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .scroll-row::-webkit-scrollbar { display: none; }
+
+        .moment-card {
+            flex: 0 0 240px;
+            scroll-snap-align: start;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--bg-secondary);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+        }
+
+        .moment-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(0,168,225,0.2);
+        }
+
+        .moment-card .thumb {
+            width: 100%;
+            height: 150px;
+            background: var(--bg-card) center center / cover no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .moment-card .thumb video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .moment-card .thumb .play-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.25);
+            transition: background 0.2s ease;
+        }
+
+        .moment-card:hover .thumb .play-overlay {
+            background: rgba(0,0,0,0.1);
+        }
+
+        .moment-card .thumb .play-overlay .play-circle {
+            width: 44px;
+            height: 44px;
+            background: rgba(0,0,0,0.55);
+            border: 2px solid rgba(255,255,255,0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: white;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .moment-card:hover .thumb .play-overlay .play-circle {
+            transform: scale(1.1);
+            background: var(--blue-accent);
+            border-color: var(--blue-accent);
+        }
+
+        .moment-card .thumb .duration-badge {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0,0,0,0.75);
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+            z-index: 2;
+        }
+
+        /* Episode number badge */
+        .moment-card .thumb .ep-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: var(--blue-accent);
+            color: white;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        .moment-card .card-info {
+            padding: 10px 12px 12px;
+        }
+
+        .moment-card .card-title {
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 4px;
+        }
+
+        .moment-card .card-duration {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* ============================================================
+           🔍 X-RAY SECTION
+           ============================================================ */
+        .xray-section {
+            padding: 8px 16px 28px;
+        }
+
+        .xray-toggle {
+            width: 100%;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(0,168,225,0.3);
+            border-radius: 12px;
+            padding: 18px 20px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .xray-toggle:hover {
+            background: rgba(0,168,225,0.1);
+            border-color: var(--blue-accent);
+        }
+
+        .xray-toggle .xray-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .xray-toggle .xray-badge {
+            background: var(--blue-accent);
+            color: white;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 3px;
+            letter-spacing: 1px;
+        }
+
+        .xray-toggle .arrow {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            color: var(--blue-accent);
+        }
+
+        .xray-toggle.open .arrow {
+            transform: rotate(180deg);
+        }
+
+        .xray-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+            background: var(--bg-secondary);
+            border-radius: 0 0 12px 12px;
+            margin-top: -12px;
+            border: 1px solid rgba(0,168,225,0.3);
+            border-top: none;
+        }
+
+        .xray-content.open {
+            max-height: 800px;
+            padding: 20px;
+        }
+
+        .xray-list {
+            list-style: none;
+        }
+
+        .xray-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .xray-content.open .xray-list li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .xray-content.open .xray-list li:nth-child(1) { transition-delay: 0.1s; }
+        .xray-content.open .xray-list li:nth-child(2) { transition-delay: 0.2s; }
+        .xray-content.open .xray-list li:nth-child(3) { transition-delay: 0.3s; }
+        .xray-content.open .xray-list li:nth-child(4) { transition-delay: 0.4s; }
+        .xray-content.open .xray-list li:nth-child(5) { transition-delay: 0.5s; }
+        .xray-content.open .xray-list li:nth-child(6) { transition-delay: 0.6s; }
+        .xray-content.open .xray-list li:nth-child(7) { transition-delay: 0.7s; }
+        .xray-content.open .xray-list li:nth-child(8) { transition-delay: 0.8s; }
+
+        .xray-list li:last-child { border-bottom: none; }
+
+        .xray-list li .num {
+            color: var(--blue-accent);
+            font-weight: 800;
+            font-size: 13px;
+            min-width: 24px;
+        }
+
+        /* ============================================================
+           🎬 COMING SOON
+           ============================================================ */
+        .coming-soon {
+            margin: 8px 16px 28px;
+            background: linear-gradient(135deg, #1a2634 0%, #0d2137 50%, #1a2634 100%);
+            border: 1px solid rgba(0,168,225,0.2);
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coming-soon::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle at center, rgba(0,168,225,0.06) 0%, transparent 60%);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        .coming-soon-content { position: relative; z-index: 2; }
+
+        .coming-soon .cs-tag {
+            display: inline-block;
+            background: rgba(0,168,225,0.15);
+            color: var(--blue-accent);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+
+        .coming-soon h3 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .coming-soon .premiere {
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .coming-soon .message {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .coming-soon .heart-anim {
+            font-size: 40px;
+            margin-top: 16px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        /* ============================================================
+           📄 FOOTER
+           ============================================================ */
+        .footer {
+            text-align: center;
+            padding: 24px 16px 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer p {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        /* ============================================================
+           🎥 MODAL — Video Player
+           ============================================================ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            max-width: 420px;
+            width: 100%;
+            overflow: hidden;
+            animation: slideUp 0.4s ease;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0,0,0,0.6);
+            border: none;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .modal-close:hover { background: rgba(255,255,255,0.2); }
+
+        .modal-media {
+            width: 100%;
+            background: #000;
+            position: relative;
+        }
+
+        .modal-media video {
+            width: 100%;
+            max-height: 50vh;
+            display: block;
+            background: #000;
+        }
+
+        .modal-media img {
+            width: 100%;
+            display: block;
+        }
+
+        .modal-media .media-fallback {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 220px;
+            font-size: 48px;
+            background: var(--bg-card);
+        }
+
+        .modal-body { padding: 20px; }
+
+        .modal-body .modal-ep {
+            font-size: 11px;
+            color: var(--blue-accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .modal-body h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 6px 0 12px;
+            line-height: 1.3;
+        }
+
+        .modal-body p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .modal-body .modal-meta {
+            margin-top: 16px;
+            font-size: 11px;
+            color: var(--text-muted);
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================================
+           🌟 ANIMATIONS
+           ============================================================ */
+        @keyframes fadeIn {
+            from { opacity: 0; } to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.3); }
+            50% { box-shadow: 0 0 0 12px rgba(255,255,255,0); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+            60% { transform: scale(1); }
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+
+        /* ============================================================
+           📱 RESPONSIVE
+           ============================================================ */
+        @media (min-width: 600px) {
+            .hero { min-height: 70vh; }
+            .hero-title { font-size: 44px; }
+            .ratings-grid { grid-template-columns: repeat(4, 1fr); }
+            .moment-card { flex: 0 0 280px; }
+            .moment-card .thumb { height: 170px; }
+            .coming-soon { padding: 40px; }
+        }
+
+        @media (min-width: 900px) {
+            .hero { min-height: 80vh; padding: 0 48px 48px; }
+            .section-header, .xray-section, .ratings-strip { padding-left: 48px; padding-right: 48px; }
+            .scroll-row { padding: 0 48px; }
+            .coming-soon { margin-left: 48px; margin-right: 48px; }
+        }
+
+        /* ============================================================
+           ✨ SPLASH SCREEN
+           ============================================================ */
+        .splash {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--bg-primary);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .splash.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .splash-logo {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+        }
+
+        .splash-logo span { color: var(--blue-accent); }
+
+        .splash-sub {
+            font-size: 13px;
+            color: var(--text-secondary);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        .splash-emoji {
+            font-size: 48px;
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0s forwards;
+        }
+
+        /* ============================================================
+           🎵 NOW PLAYING BAR
+           ============================================================ */
+        .now-playing {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(15,23,33,0.98), rgba(26,38,52,0.95));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 500;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            border-top: 1px solid rgba(0,168,225,0.2);
+        }
+
+        .now-playing.visible { transform: translateY(0); }
+
+        .now-playing .np-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .now-playing .np-icon { font-size: 20px; }
+
+        .now-playing .np-text .np-title { font-size: 13px; font-weight: 600; }
+        .now-playing .np-text .np-artist { font-size: 11px; color: var(--text-muted); }
+
+        .now-playing .np-pause {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Section divider line */
+        .section-divider {
+            height: 1px;
+            background: rgba(255,255,255,0.04);
+            margin: 0 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+         ✨ SPLASH SCREEN
+         ============================================================ -->
+    <div class="splash" id="splash">
+        <div class="splash-emoji">🎬</div>
+        <div class="splash-logo">prime <span>video</span> de amor</div>
+        <div class="splash-sub">Loading something special for Mariling...</div>
+    </div>
+
+    <!-- ============================================================
+         🎵 AUDIO — Your song
+         ============================================================
+         Upload your MP3 to catbox.moe and paste the URL here,
+         OR use the Spotify embed option (commented below).
+    -->
+
+    <!-- ============================================================
+         🧭 NAVIGATION
+         ============================================================ -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <div class="brand">prime <span>video</span> de amor</div>
+            <div class="sub">Exclusively for Mariling 🩺💕</div>
+        </div>
+        <div class="navbar-badge">VIP</div>
+    </nav>
+
+    <!-- ============================================================
+         🖼️ HERO BANNER
+         ============================================================ -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-tag">🔴 Streaming Now</div>
+            <h1 class="hero-title">Nuestra Historia<br>de Amor</h1>
+            <p class="hero-subtitle">The most-watched love story across two continents 🌎</p>
+            <div class="hero-meta">
+                <span>2024</span>
+                <span class="separator">·</span>
+                <span>3 Seasons</span>
+                <span class="separator">·</span>
+                <span>Nicaragua & Israel</span>
+                <span class="separator">·</span>
+                <span>12 Episodes</span>
+                <span class="separator">·</span>
+                <span class="badge-hd">4K UHD</span>
+            </div>
+            <div class="hero-actions">
+                <button class="btn-play" onclick="document.getElementById('row1').scrollIntoView({behavior:'smooth',block:'center'})">
+                    <span>▶</span>
+                    <span>Watch Now</span>
+                </button>
+                <button class="btn-secondary" onclick="shareMessage()">
+                    📤 Share
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         ⭐ RATINGS & INFO
+         ============================================================ -->
+    <section class="ratings-strip">
+        <div class="ratings-grid">
+            <div class="rating-item">
+                <div class="emoji">⭐</div>
+                <div class="label">Relationship Rating</div>
+                <div class="value gold">10/10</div>
+            </div>
+            <div class="rating-item">
+                <div class="emoji">🔥</div>
+                <div class="label">Cuteness Level</div>
+                <div class="value blue">Off the charts</div>
+            </div>
+            <div class="rating-item">
+                <div class="emoji">📺</div>
+                <div class="label">Episodes Together</div>
+                <div class="value">12 (and counting)</div>
+            </div>
+            <div class="rating-item">
+                <div class="emoji">🎬</div>
+                <div class="label">Directed By</div>
+                <div class="value">God & WhatsApp</div>
+            </div>
+        </div>
+
+        <div class="description-card">
+            <p>
+                <em>Genre:</em> Romance · Long Distance · Comedy · Medical Drama<br><br>
+                <em>Audio:</em> Spanglish (our official language) 🇳🇮🇮🇱<br><br>
+                <em>Subtitles:</em> Kisses, Memes & Voice Notes<br><br>
+                <em>Subscribers:</em> Just you, mi amor 💕<br><br>
+                <em>Filmed on location in:</em> Nicaragua, Israel, Costa Rica, Rome & more<br><br>
+                Sinopsis: Two people, 11,000 km apart, prove that love has no buffering issues.
+                She's a doctora saving lives in Nicaragua. He's an SDE intern building things at Amazon.
+                Together, they're building the greatest feature of all — <em>a future together</em>.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         🎞️ ROW 1: SEASON PREMIERE — The romantic/emotional videos
+         ============================================================ -->
+    <section class="section">
+        <div class="section-header">
+            <h2>💕 Season Premiere: Nuestra Historia <span class="prime-badge">Included with Prime</span></h2>
+            <p class="section-sub">The moments that started it all</p>
+        </div>
+        <div class="scroll-row" id="row1"></div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ============================================================
+         🎞️ ROW 2: FUNNIEST MOMENTS — The comedy gold
+         ============================================================ -->
+    <section class="section">
+        <div class="section-header">
+            <h2>😂 Trending: Nuestros Momentos Más Chistosos</h2>
+            <p class="section-sub">Warning: You WILL laugh (and maybe cry a little)</p>
+        </div>
+        <div class="scroll-row" id="row2"></div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ============================================================
+         🎞️ ROW 3: ADVENTURES — Traveling together
+         ============================================================ -->
+    <section class="section">
+        <div class="section-header">
+            <h2>🌎 Adventures: Better Together</h2>
+            <p class="section-sub">From Costa Rica to Rome to her living room</p>
+        </div>
+        <div class="scroll-row" id="row3"></div>
+    </section>
+
+    <!-- ============================================================
+         🔍 X-RAY SECTION
+         ============================================================ -->
+    <section class="xray-section">
+        <button class="xray-toggle" id="xrayToggle" onclick="toggleXRay()">
+            <div class="xray-label">
+                <span class="xray-badge">X-RAY</span>
+                <span>Lo Que Amo de Ti 💕</span>
+            </div>
+            <span class="arrow">▼</span>
+        </button>
+        <div class="xray-content" id="xrayContent">
+            <ul class="xray-list">
+                <li>
+                    <span class="num">01</span>
+                    You are so beautiful — por dentro y por fuera. Every time I see you, I still can't believe you're mine. 😍
+                </li>
+                <li>
+                    <span class="num">02</span>
+                    You just completed the hardest medical internship and became a DOCTORA. I am SO incredibly proud of you. You worked so hard and you earned every bit of it. 🩺👩‍⚕️🏆
+                </li>
+                <li>
+                    <span class="num">03</span>
+                    You know me better than anyone — sin que yo diga nada, you already know what I'm thinking. That connection is something I've never had with anyone else. 🧠💕
+                </li>
+                <li>
+                    <span class="num">04</span>
+                    Your courage blows my mind. You're leaving Nicaragua, crossing the world, building a completely new life in Israel — with me. That takes a bravery most people don't have. 🦁✈️
+                </li>
+                <li>
+                    <span class="num">05</span>
+                    You are my home and my safe place. No matter where I am — if you're there, I'm home. Tú eres mi hogar. 🏠❤️
+                </li>
+                <li>
+                    <span class="num">06</span>
+                    You're smart, you're driven, and you know how to get what you want. I love your vision — the way you already imagine our apartment, our life, our future together. 🎨🏡
+                </li>
+                <li>
+                    <span class="num">07</span>
+                    You make me laugh like nobody else. You're funny, you're weird (in the best way), and every day with you is the best episode yet. 😂💀
+                </li>
+                <li>
+                    <span class="num">08</span>
+                    We survived 11,000 km, time zones, immigration papers, and Nicaraguan WiFi. We are an unstoppable team. And the best part? We're just getting started. Somos imparables, mi amor. 🚀❤️‍🔥
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         🎬 COMING SOON
+         ============================================================ -->
+    <section class="coming-soon">
+        <div class="coming-soon-content">
+            <div class="cs-tag">🍿 Coming Soon</div>
+            <h3>Season 4:<br>Together in Israel 🇮🇱</h3>
+            <div class="premiere">Premieres: Next Month ✈️</div>
+            <p class="message">
+                No more buffering. No more lag. No more "te extraño" texts at 3am.<br><br>
+                Just us. En persona. Finally.<br>
+                The best season is about to begin.
+            </p>
+            <div class="heart-anim">❤️</div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         📄 FOOTER
+         ============================================================ -->
+    <footer class="footer">
+        <p>
+            © 2026 Prime Video de Amor™. All rights reserved.<br>
+            A production of Itamar & Mariling Studios 🎬<br><br>
+            <a href="#">Terms of Love</a> · <a href="#">Privacy (lol, everyone knows we're cute)</a><br>
+            <em>Included with Prime... porque tú eres mi Prime 👑</em>
+        </p>
+    </footer>
+
+    <!-- ============================================================
+         🎥 MODAL
+         ============================================================ -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div class="modal-media" id="modalMedia"></div>
+            <div class="modal-body">
+                <div class="modal-ep" id="modalEp"></div>
+                <h3 id="modalTitle"></h3>
+                <p id="modalMessage"></p>
+                <div class="modal-meta">
+                    <span id="modalMeta1"></span>
+                    <span id="modalMeta2"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         🎵 NOW PLAYING BAR
+         ============================================================ -->
+
+
+    <!-- ============================================================
+         🧠 JAVASCRIPT
+         ============================================================ -->
+    <script>
+        // ============================================================
+        // ✨ SPLASH SCREEN
+        // ============================================================
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('splash').classList.add('hidden');
+            }, 2500);
+        });
+
+        let isPlaying = false;
+
+        // ============================================================
+        // 📤 SHARE
+        // ============================================================
+        function shareMessage() {
+            const shareData = {
+                title: 'Prime Video de Amor',
+                text: '🎬 Check out our love story on Prime Video de Amor! 💕',
+                url: window.location.href
+            };
+            if (navigator.share) {
+                navigator.share(shareData).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    alert('🔗 Link copied! Share it con todo el mundo 💕');
+                });
+            }
+        }
+
+        // ============================================================
+        // 🔍 X-RAY
+        // ============================================================
+        function toggleXRay() {
+            document.getElementById('xrayToggle').classList.toggle('open');
+            document.getElementById('xrayContent').classList.toggle('open');
+        }
+
+        // ============================================================
+        // 🎥 ALL 12 VIDEOS — Organized by category
+        // ============================================================
+        /*
+            📹 HOW TO ADD YOUR STREAMABLE VIDEOS:
+            
+            1. Upload your video to streamable.com
+            2. After upload, copy the URL (e.g., https://streamable.com/ny0wjx)
+            3. Take ONLY the code at the end (e.g., "ny0wjx")
+            4. Paste it as the "src" value below
+            
+            That's it! The code will automatically build the correct embed URL.
+            
+            EXAMPLE:
+              Your Streamable link: https://streamable.com/abc123
+              What to put as src:   'abc123'
+            
+            You can also use:
+            - A direct .mp4 URL from catbox.moe or cloudinary
+            - A local filename like 'video1.mp4'
+        */
+
+        // ─── ROW 1: SEASON PREMIERE — The romantic moments ───
+        const row1Videos = [
+            {
+                ep: 'S1 · E1',
+                title: 'The Airport Reunion 🛬💕',
+                message: 'After months apart, we finally saw each other at the airport in Nicaragua. I ran, you ran, we hugged so tight the whole airport probably thought we were in a movie. And then the shy kiss because you don\'t like PDA 😂 but mi amor, your face said it all. That hug was worth every single day of waiting.',
+                src: 'ugy6qj',    // ← 📹 Paste your Streamable code (e.g., 'ny0wjx')
+                poster: '',
+                duration: '0:30',
+                meta1: '✈️ Location: Nicaragua Airport',
+                meta2: '😭 Tears: Yes (happy ones)'
+            },
+            {
+                ep: 'S1 · E2',
+                title: 'The Proposal — Eilat Edition 💍',
+                message: 'My mom took possibly the worst video in cinematographic history... but honestly? It\'s perfect because it\'s OURS. The shaky camera, the wind, the moment you said yes — it\'s the most beautiful "bad" video ever made. Te amo para siempre, mi esposa. 💍❤️',
+                src: 'cego1a',    // ← 📹 Paste your Streamable code
+                poster: '',
+                duration: '0:40',
+                meta1: '💍 Location: Eilat, Israel',
+                meta2: '🎥 Cinematographer: Mom (she tried her best)'
+            },
+            {
+                ep: 'S1 · E3',
+                title: 'Besitos en la Cama 😘',
+                message: 'Just us being us. Kissing each other\'s cheeks, noses, being silly, being in love. No WiFi needed, no airport needed — just you and me and our little world of besos. This is my favorite place in the universe: next to you. 🥰',
+                src: 'qj2w2q',    // ← 📹 Paste your Streamable code
+                poster: '',
+                duration: '0:12',
+                meta1: '😘 Kiss count: Lost track',
+                meta2: '💕 Cuteness: Maximum'
+            }
+        ];
+
+        // ─── ROW 2: FUNNIEST MOMENTS — Comedy gold ───
+        const row2Videos = [
+            {
+                ep: 'S2 · E1',
+                title: 'Caught Kissing the Air 💋😂',
+                message: 'Mariling caught me on camera kissing the air with my tongue and I didn\'t even know she was recording. THE BETRAYAL. THE EVIDENCE. This video can never be deleted. I have no defense. I plead guilty of being weird. But you married this, mi amor. No refunds! 😂💀',
+                src: 'i4cbe1',    // ← 📹 Paste your Streamable code
+                poster: '',
+                duration: '0:06',
+                meta1: '👅 Cringe Level: Maximum',
+                meta2: '📱 Blackmail Material: Confirmed'
+            },
+            {
+                ep: 'S2 · E2',
+                title: 'The Door That Was a Window 🚪🪟',
+                message: 'Picture this: I\'m trying to open the hostel door. I accidentally open the window instead. Then I try to JUMP THROUGH THE WINDOW. Then I accidentally open the actual door. Mariling is dying of laughter in the background. I\'m "you\'re  emergency contact 💀 I\'m an software engineer, not a door engineer okay?!',
+                src: 'xmpdlm',    // ← 📹 Paste your Streamable code
+                poster: '',
+                duration: '0:15',
+                meta1: '🚪 Doors opened: 0 (eventually 1)',
+                meta2: '🪟 Windows opened: 1 (accidentally)'
+            },
+            {
+                ep: 'S2 · E3',
+                title: 'La Guerra del Tiramisú 🍰⚔️',
+                message: 'Tiramisú is OUR dessert. Except apparently "ours" means "mostly mine" because I kept stealing from her spoon 😂 She was trying to eat peacefully and I turned it into a competitive sport. In my defense... it was REALLY good tiramisú. Next time I\'ll order two. Maybe. Probably not. 🤣',
+                src: 'uqc23d',    // ← 📹 Paste your Streamable code
+                poster: '',
+                duration: '1:08',
+                meta1: '🍰 Tiramisú stolen: 70%',
+                meta2: '😤 Mariling\'s patience: Running low'
+            },
+            {
+                ep: 'S2 · E4',
+                title: 'Borrachos en España 🍷🇪🇸😂',
+                message: 'Spain + alcohol + us = pure comedy. Mariling only drinks with me because she only trusts me, and honestly that makes me feel like the luckiest man alive. In this video we are saying absolute NONSENSE, laughing at nothing, and being the most chaotic version of ourselves. This is the real us: crazy, happy, and a little bit drunk. Te amo even when you make no sense, mi amor. Actually, ESPECIALLY when you make no sense. 🍷😂❤️',
+                src: 'ny0wjx',    // ← 📹 Paste your Streamable code
+                poster: '',
+                duration: '1:23',
+                meta1: '🍷 Drinks: Enough',
+                meta2: '🧠 Brain cells: On vacation'
+            },
+            {
+                ep: 'S2 · E5',
+                title: 'The €5 Umbrella of Roma ☂️💀',
+                message: 'It rained in Rome. We bought the cheapest umbrella we could find. Five euros. And it lasted approximately 4 minutes before completely self-destructing. Mariling is in the middle of the street FIGHTING this umbrella like it personally insulted her family 😂☂️ We were soaked, broken umbrella in hand, laughing like idiots. Best €5 we ever spent.',
+                src: 'c6q3jy',    // ← 📹 Paste your Streamable code
+                poster: '',
+                duration: '0:08',
+                meta1: '☂️ Umbrella status: Deceased',
+                meta2: '🇮🇹 Rome survived: Barely'
+            }
+        ];
+
+        // ─── ROW 3: ADVENTURES — Dancing, traveling, living ───
+        const row3Videos = [
+            {
+                ep: 'S3 · E1',
+                title: 'Beach Dance Fail — Costa Rica 🏖️🤣',
+                message: 'We started this video trying to be romantic. Slow dance on a beautiful tropical beach in Costa Rica. Very cinematic. Very elegant. That lasted about 3 seconds before we started jumping on each other, being annoying, and turning it into a complete mess. We don\'t do "romantic and chill." We do "romantic and chaotic." 🌊😂',
+                src: '6wc4jy',    // ← 📹 Paste your Streamable code
+                poster: '',
+                duration: '0:49',
+                meta1: '🏖️ Location: Costa Rica',
+                meta2: '💃 Romance level: Started high, ended in chaos'
+            },
+            {
+                ep: 'S3 · E2',
+                title: 'Mariling vs. Ice ⛸️😱',
+                message: 'Her first time ice skating. She was holding my hand SO TIGHT I thought my fingers would fall off. Every 2 seconds: "NO NO NO DON\'T LET GO" 😂 She was literally fighting for her life while I was trying not to laugh. Mi doctora can save lives but she cannot save herself on ice. Te amo, my brave scared girl! ⛸️❤️',
+                src: '8xzyxi',    // ← 📹 Paste your Streamable code
+                poster: '',
+                duration: '0:46',
+                meta1: '⛸️ Falls: Surprisingly 0',
+                meta2: '😱 Screams: At least 47'
+            },
+            {
+                ep: 'S3 · E3',
+                title: 'Car Karaoke: Singing Like Crazy 🚗🎤',
+                message: 'Me driving, Mariling in the passenger seat, both of us singing and dancing like ABSOLUTE LUNATICS. No shame. No talent. Just pure joy. We did this so many times — this is basically our commute soundtrack. If our car had a talent show rating, we\'d get 0 stars but 10/10 for energy. 🎶😂',
+                src: '6m05io',    // ← 📹 Paste your Streamable code
+                poster: '',
+                duration: '0:49',
+                meta1: '🎤 Vocal talent: 0/10',
+                meta2: '🕺 Energy: 1000/10'
+            },
+            {
+                ep: 'S3 · E4',
+                title: 'Baile Elegante en Casa 💃🕺✨',
+                message: 'We both got dressed up fancy — like REALLY fancy — and then just started dancing like crazy in her house. No occasion. No reason. Just two people in love who decided tonight is a dance party for two. This is the kind of life I want forever, mi amor. Dressed up, dancing, laughing, together. 💕',
+                src: 'qn18db',    // ← 📹 Paste your Streamable code
+                poster: '',
+                duration: '0:13',
+                meta1: '👔 Dress code: Fancy (for no reason)',
+                meta2: '💃 Moves: Questionable but passionate'
+            }
+        ];
+
+        // Combine all for modal access
+        const allVideos = [...row1Videos, ...row2Videos, ...row3Videos];
+
+        // ============================================================
+        // 🔧 HELPER — Detect if src is a Streamable code or direct URL
+        // ============================================================
+        function isStreamableCode(src) {
+            // Streamable codes are short alphanumeric strings (no dots, no slashes)
+            // Direct URLs contain '.' or '/' or 'http'
+            if (!src || src === 'PASTE_CODE_HERE') return false;
+            return !src.includes('.') && !src.includes('/') && !src.includes('http');
+        }
+
+        function getStreamableEmbedUrl(code) {
+            // Strip the full URL if someone pastes the whole thing
+            if (code.includes('streamable.com/')) {
+                code = code.split('streamable.com/').pop().replace('e/', '');
+            }
+            return `https://streamable.com/e/${code}?autoplay=1&muted=1`;
+        }
+
+        function getStreamableThumbnail(code) {
+            if (code.includes('streamable.com/')) {
+                code = code.split('streamable.com/').pop().replace('e/', '');
+            }
+            return `https://cdn-cf-east.streamable.com/image/${code}.jpg`;
+        }
+
+        // ============================================================
+        // 🃏 BUILD MOMENT CARDS
+        // ============================================================
+        function buildRow(containerId, videos, startIndex) {
+            const row = document.getElementById(containerId);
+            
+            videos.forEach((moment, i) => {
+                const globalIndex = startIndex + i;
+                const card = document.createElement('div');
+                card.className = 'moment-card';
+                card.onclick = () => openModal(globalIndex);
+                
+                let thumbContent = '';
+                if (moment.src && moment.src !== 'PASTE_CODE_HERE') {
+                    if (isStreamableCode(moment.src)) {
+                        // Streamable — use thumbnail image
+                        const thumbUrl = moment.poster || getStreamableThumbnail(moment.src);
+                        thumbContent = `<div style="width:100%;height:100%;background:url('${thumbUrl}') center/cover no-repeat, var(--bg-card);"></div>`;
+                    } else {
+                        // Direct video file — show video preview
+                        const posterAttr = moment.poster ? `poster="${moment.poster}"` : '';
+                        thumbContent = `
+                            <video muted loop playsinline ${posterAttr}
+                                onmouseenter="this.play().catch(()=>{})" 
+                                onmouseleave="this.pause();this.currentTime=0;">
+                                <source src="${moment.src}" type="video/mp4">
+                            </video>
+                        `;
+                    }
+                }
+                
+                card.innerHTML = `
+                    <div class="thumb">
+                        ${thumbContent}
+                        <div class="play-overlay">
+                            <div class="play-circle">▶</div>
+                        </div>
+                        <span class="ep-badge">${moment.ep}</span>
+                        <div class="duration-badge">${moment.duration || ''}</div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-title">${moment.title}</div>
+                        <div class="card-duration">📹 Tap to watch</div>
+                    </div>
+                `;
+                
+                row.appendChild(card);
+            });
+        }
+
+        // Build all three rows
+        buildRow('row1', row1Videos, 0);
+        buildRow('row2', row2Videos, row1Videos.length);
+        buildRow('row3', row3Videos, row1Videos.length + row2Videos.length);
+
+        // ============================================================
+        // 🎥 MODAL — Video Player (supports Streamable embeds + direct MP4)
+        // ============================================================
+        let currentModalVideo = null;
+
+        function openModal(index) {
+            const moment = allVideos[index];
+            const overlay = document.getElementById('modalOverlay');
+            const media = document.getElementById('modalMedia');
+
+            document.getElementById('modalEp').textContent = moment.ep;
+            document.getElementById('modalTitle').textContent = moment.title;
+            document.getElementById('modalMessage').textContent = moment.message;
+            document.getElementById('modalMeta1').textContent = moment.meta1;
+            document.getElementById('modalMeta2').textContent = moment.meta2;
+
+            if (moment.src && moment.src !== 'PASTE_CODE_HERE') {
+                if (isStreamableCode(moment.src)) {
+                    // ── STREAMABLE EMBED ──
+                    const embedUrl = getStreamableEmbedUrl(moment.src);
+                    media.innerHTML = `
+                        <div style="position:relative;width:100%;padding-bottom:56.25%;background:#000;">
+                            <iframe id="modalIframe" 
+                                src="${embedUrl}" 
+                                allow="autoplay; fullscreen" 
+                                allowfullscreen 
+                                style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;">
+                            </iframe>
+                        </div>
+                    `;
+                    currentModalVideo = null;
+                } else {
+                    // ── DIRECT VIDEO FILE ──
+                    const posterAttr = moment.poster ? `poster="${moment.poster}"` : '';
+                    media.innerHTML = `
+                        <video id="modalVideo" controls playsinline autoplay ${posterAttr}
+                            style="width:100%;max-height:50vh;display:block;background:#000;"
+                            onerror="this.parentElement.innerHTML='<div class=\\'media-fallback\\'>🎬</div>'">
+                            <source src="${moment.src}" type="video/mp4">
+                        </video>
+                    `;
+                    setTimeout(() => {
+                        currentModalVideo = document.getElementById('modalVideo');
+                        if (currentModalVideo) currentModalVideo.play().catch(() => {});
+                    }, 100);
+                }
+            } else {
+                media.innerHTML = '<div class="media-fallback">🎬</div>';
+            }
+
+            // Lower background song volume
+            if (isPlaying) audio.volume = 0.15;
+
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            
+            const overlay = document.getElementById('modalOverlay');
+            
+            // Stop video
+            if (currentModalVideo) { currentModalVideo.pause(); currentModalVideo = null; }
+            const vid = document.getElementById('modalVideo');
+            if (vid) vid.pause();
+            
+            // Remove Streamable iframe to stop playback
+            const iframe = document.getElementById('modalIframe');
+            if (iframe) iframe.src = '';
+
+            // Restore background song volume
+            if (isPlaying) audio.volume = 1.0;
+            
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+
+</body>
+</html>
